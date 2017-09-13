@@ -1,0 +1,12 @@
+h1 {
+text-align:center;
+font-size: 60px;
+background-color:teal;
+color:white;
+
+}
+button{
+	background-color:teal;
+	color: white;
+	margin: 20px;
+}

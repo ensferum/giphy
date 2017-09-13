@@ -10,19 +10,19 @@ $(document).ready(function() {
 
 renderButtons();
     function renderButtons() {
-        $("#Button-Row").empty();
+        $("#buttonRow").empty();
         for (var i = 0; i < sharks.length; i++) {
             var button=$("<button>");
             button.addClass("Generate-gallery");
             button.data("Sharks", sharks[i]);
             button.addClass("btn spacing");
             button.text(sharks[i]);
-            $("#Button-Row").append(button);
+            $("#buttonRow").append(button);
         }
     }
     $("#add-artist").on("click", function() {
         event.preventDefault();
-        var input=$("#shark-input").val();
+        var input=$("#submit-input").val();
         if (topics.indexOf(input)===-1&&input!="")
         {
           sharks.push(input);
