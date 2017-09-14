@@ -1,11 +1,12 @@
 $(document).ready(function() {
     var searchQuery;
     var currentPlay;
+    //Sets the initial array of sharks to appear to click on
     var topics = ["Tiger Shark", "Great White Shark", "Megamouth Shark", "Goblin Shark", "Leopard Shark", "Sand Tiger Shark", "Basking Shark", "Thresher Shark", "Whale Shark", "Sevengill Shark"];
 
 
     renderButtons();
-
+    //Rendering the buttons
     function renderButtons() {
         $("#buttonRow").empty();
         for (var i = 0; i < topics.length; i++) {
@@ -17,8 +18,9 @@ $(document).ready(function() {
             $("#buttonRow").append(button);
         }
     }
-    $("#addArtist").on("click", function() {
-        // event.preventDefault();
+    //Adds a new shark based on user input
+    $("#addShark").on("click", function() {
+        event.preventDefault();
         var input = $("#submit-input").val();
         if (topics.indexOf(input) === -1 && input != "") {
             topics.push(input);
@@ -35,11 +37,12 @@ $(document).ready(function() {
         searchQuery = $(this).data("topics");
         currentPlay = undefined;
         $("#gallery").empty();
-        $("#gallery").append("<h1 class='col-md-12'>" + searchQuery + "<h1>");
+        $("#gallery").append("<h1 class='col-lg-12'>" + searchQuery + "<h1>");
         while (searchQuery.indexOf(" ") != -1) {
             searchQuery = searchQuery.replace(" ", "+");
         }
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + encodeURI(searchQuery) + "&limit=10&api_key=dc6zaTOxFJmzC";
+        //Stops the GIF from showing rated R pics
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + encodeURI(searchQuery) + "&limit=10&api_key=dc6zaTOxFJmzC&rating=pg-13";
         $.ajax({
             url: queryURL,
             method: 'GET'
@@ -47,7 +50,7 @@ $(document).ready(function() {
             for (var i = 0; i < response.data.length; i++) {
                 var entry = $("<div>");
                 var img = $("<img>");
-                $(entry).addClass("Canvas col-md-3");
+                $(entry).addClass("Canvas col-lg-3");
                 $(entry).append("<h2> Rating: " + response.data[i].rating + "<h2>");
                 $(img).attr("src", response.data[i].images.fixed_width_still.url);
                 $(img).data("giphyData", response.data[i]);
@@ -58,7 +61,7 @@ $(document).ready(function() {
         });
     });
 
-
+    //Starts and stops the Gif from playing upon click action
 
     $(document).on("click", ".Play", function() {
         if (currentPlay != undefined) {
