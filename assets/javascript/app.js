@@ -74,6 +74,8 @@ $(document).ready(function() {
         currentPlay = this;
         $(this).attr("src", $(this).data("giphyData").images.fixed_width.url);
     });
+
+    //Starts and stops the Gif from playing upon mouse hover action
     $(document).on("mouseenter", ".Play", function() {
         if (currentPlay === this) {
             return;
