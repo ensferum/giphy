@@ -17,8 +17,8 @@ $(document).ready(function() {
             $("#buttonRow").append(button);
         }
     }
-    $("#add-artist").on("click", function() {
-        event.preventDefault();
+    $("#addArtist").on("click", function() {
+        // event.preventDefault();
         var input = $("#submit-input").val();
         if (topics.indexOf(input) === -1 && input != "") {
             topics.push(input);
