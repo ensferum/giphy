@@ -11,3 +11,15 @@ button{
 	margin: 20px;
 }
 
+body{
+
+        background: url('../images/shark.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+   }
+
+
+
+}
